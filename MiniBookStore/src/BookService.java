@@ -1,16 +1,86 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class BookService implements ProductService {
+    //2.Adim : ProductService i implement et ve methodlari book a uygun sekilde doldur
+    //3-Adim : Booklari saklamak icin list olusturalim
+    List<Book> bookList = new ArrayList<>();
+
+    //4.Adim : Baslangicta kayitli kitaplar olsun
+    public BookService() {
+        Book book1 = new Book(1, "Vadideki Zambak", "150", 25, "Balzac", "Penguin");
+        Book book2 = new Book(1, "Suc ve Ceza", "150", 12, "Dostoyevski", "Penguin");
+        Book book3 = new Book(1, "Sefiller", "125", 12, "Victor Hugo", "Dream");
+
+        this.bookList.add(book1);
+        this.bookList.add(book2);
+        this.bookList.add(book3);
+    }
+
+
+    //5. Adim:bookla ilgili islemleri gosteren bir menu
     @Override
     public void productMenu() {
-        
+        Scanner scanner = new Scanner(System.in);
+        int choice = -1;
+        while (choice != 0) {
+            System.out.println("1-Kitaplari Listele");
+            System.out.println("2-Kitap Ekle");
+            System.out.println("3-Kitap Sil");
+            System.out.println("4-Yayinevine Gore Kitaplari Filtrele");
+            System.out.println("0-Cikis");
+            System.out.print("Seciminiz : ");
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    listProduct();
+                    break;
+                case 2:
+                    addProduct();
+                    break;
+                case 3:
+                    removeProduct();
+                    break;
+                case 4:
+                    System.out.println("Yayinevini giriniz");
+                    String pub = scanner.next();
+                    filterProduct(pub);
+                    break;
+                case 0:
+                    System.out.println("Ana menuye yonlendiriliyorsunuz");
+                    break;
+                default:
+                    System.out.println("Hatali giris");
+            }
+        }
+
     }
+
+    //6.Adim: booklari formatla yazdirlim
 
     @Override
     public void listProduct() {
+        System.out.println("===================================");
+        System.out.printf("%-2s | %-20s | %-15s | %-10s | %-7s | %-5s  \n",
+                "ID", "Kitap Adi", "Yazari", "Yayinevi", "Birim Fiyat", "Stok");
+        for (Book book : bookList) {
+            System.out.printf("%-2s | %-20s | %-15s | %-10s | %-7s | %-5s  \n",
+                    book.getId(), book.getName(), book.getAuthorName(), book.getPublisher(),
+                    book.getPrice(), book.getStock());
+        }
+        System.out.println("===================================");
+
 
     }
 
+    //7.Adim: Kullanicidan alinan bilgilerle Book obj olusturulacak ve listeye eklenecek
     @Override
     public void addProduct() {
+        Scanner inp = new Scanner(System.in);
+        System.out.println("Kitap Adi : ");
+        String bookName = inp.next();
+
 
     }
 
@@ -23,6 +93,6 @@ public class BookService implements ProductService {
     public void filterProduct(String filter) {
 
     }
-    //2.Adim : ProductService i implement et ve methodlari book a uygun sekilde doldur
+
 
 }
