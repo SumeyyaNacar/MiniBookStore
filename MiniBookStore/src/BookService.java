@@ -10,8 +10,8 @@ public class BookService implements ProductService {
     //4.Adim : Baslangicta kayitli kitaplar olsun
     public BookService() {
         Book book1 = new Book(1, "Vadideki Zambak", "150", 25, "Balzac", "Penguin");
-        Book book2 = new Book(1, "Suc ve Ceza", "150", 12, "Dostoyevski", "Penguin");
-        Book book3 = new Book(1, "Sefiller", "125", 12, "Victor Hugo", "Dream");
+        Book book2 = new Book(2, "Suc ve Ceza", "150", 12, "Dostoyevski", "Penguin");
+        Book book3 = new Book(3, "Sefiller", "125", 12, "Victor Hugo", "Dream");
 
         this.bookList.add(book1);
         this.bookList.add(book2);
@@ -80,7 +80,17 @@ public class BookService implements ProductService {
         Scanner inp = new Scanner(System.in);
         System.out.println("Kitap Adi : ");
         String bookName = inp.next();
+        System.out.println("Yazar Adi : ");
+        String authorName= inp.next();
+        System.out.println("Yayinevi  : ");
+        String pub = inp.next();
+        System.out.println("Birim Fiyat : ");
+        String price = inp.next();
+        System.out.println("Stok : ");
+        int  stock = inp.nextInt();
 
+        Book newBook = new Book(this.bookList.get(this.bookList.size()-1).getId()+1,bookName,price,stock, authorName,pub);
+        this.bookList.add(newBook);
 
     }
 
