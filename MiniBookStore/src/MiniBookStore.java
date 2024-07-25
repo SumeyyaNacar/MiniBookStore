@@ -14,6 +14,15 @@ Proje: Mini Book Story
 
 */
 
+    public static void main(String[] args) {
+        enter();
+    }
+
+    //1. adim : product, book ve notebook classlari olustur
+
+
+    private static void enter() {
+    }
 
 
 }
