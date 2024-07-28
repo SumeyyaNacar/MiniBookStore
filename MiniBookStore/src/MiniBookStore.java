@@ -39,7 +39,7 @@ Proje: Mini Book Story
             select = scanner.nextInt();
 
             //ProductService i referans alarak service olustur
-
+            //interface tipinde bir variable olustur ve karsi tarafa ilgili class constr. koy
             ProductService service = select==1?new BookService():new NotebookService();
 
             //select==1-> BookService service1 = new BookService();
