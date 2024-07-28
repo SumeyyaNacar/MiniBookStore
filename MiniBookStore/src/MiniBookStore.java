@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class MiniBookStore {
 /*
@@ -24,8 +25,40 @@ Proje: Mini Book Story
     //1. adim : product, book ve notebook classlari olustur
 
 
+
     private static void enter() {
-        //
+        //10. Adim: kategori menu
+        Scanner scanner = new Scanner(System.in);
+        int select =-1;
+        while (select!=0){
+            System.out.println("Urun Yonetim Paneli");
+            System.out.println("1-Kitaplar");
+            System.out.println("2-Defterler");
+            System.out.println("0-Cikis");
+            System.out.println("Seciminiz : ");
+            select = scanner.nextInt();
+
+            //ProductService i referans alarak service olustur
+
+            ProductService service = select==1?new BookService():new NotebookService();
+
+            //select==1-> BookService service1 = new BookService();
+            //select==2-> NotebookService service1 = new NotebookService();
+
+            if (select==1||select ==2){
+                service.productMenu();
+            }else if (select ==0){
+                System.out.println("Iyi gunler....");
+            }else {
+                System.out.println("Hatali giris...");
+            }
+
+
+        }
+
+
+
+
     }
 
 
