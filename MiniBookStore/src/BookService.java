@@ -94,9 +94,26 @@ public class BookService implements ProductService {
 
     }
 
+    //Kullanicidan id al. id ile book bul, listeden kaldir.
     @Override
     public void removeProduct() {
-
+        Scanner inp = new Scanner(System.in);
+        boolean isExist = true;
+        System.out.println("Kitap ID: ");
+        int id = inp.nextInt();
+        for (Book book:bookList){
+            if (book.getId()==id){
+                isExist= true;
+                this.bookList.remove(id);
+                System.out.println("Kitap silindi");
+                break;
+            }else {
+                isExist=false;
+            }
+        }
+        if (!isExist){
+            System.out.println("Kitap bulunamadi");
+        }
     }
 
     @Override
