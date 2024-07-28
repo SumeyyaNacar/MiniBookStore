@@ -81,15 +81,15 @@ public class BookService implements ProductService {
         System.out.println("Kitap Adi : ");
         String bookName = inp.next();
         System.out.println("Yazar Adi : ");
-        String authorName= inp.next();
+        String authorName = inp.next();
         System.out.println("Yayinevi  : ");
         String pub = inp.next();
         System.out.println("Birim Fiyat : ");
         String price = inp.next();
         System.out.println("Stok : ");
-        int  stock = inp.nextInt();
+        int stock = inp.nextInt();
 
-        Book newBook = new Book(this.bookList.get(this.bookList.size()-1).getId()+1,bookName,price,stock, authorName,pub);
+        Book newBook = new Book(this.bookList.get(this.bookList.size() - 1).getId() + 1, bookName, price, stock, authorName, pub);
         this.bookList.add(newBook);
 
     }
@@ -101,24 +101,31 @@ public class BookService implements ProductService {
         boolean isExist = true;
         System.out.println("Kitap ID: ");
         int id = inp.nextInt();
-        for (Book book:bookList){
-            if (book.getId()==id){
-                isExist= true;
+        for (Book book : bookList) {
+            if (book.getId() == id) {
+                isExist = true;
                 this.bookList.remove(id);
                 System.out.println("Kitap silindi");
                 break;
-            }else {
-                isExist=false;
+            } else {
+                isExist = false;
             }
         }
-        if (!isExist){
+        if (!isExist) {
             System.out.println("Kitap bulunamadi");
         }
     }
 
+    //9. Adim: filtreleme methodu- tum kitaplarin yayinevine bak filter ile ayni ise bilgileri geti
     @Override
     public void filterProduct(String filter) {
-
+        for (Book book : bookList) {
+            if (book.getPublisher().equalsIgnoreCase(filter)) {
+                System.out.printf("%-2s | %-20s | %-15s | %-10s | %-7s | %-5s  \n",
+                        book.getId(), book.getName(), book.getAuthorName(), book.getPublisher(),
+                        book.getPrice(), book.getStock());
+            }
+        }
     }
 
 
