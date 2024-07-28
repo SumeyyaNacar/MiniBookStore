@@ -10,7 +10,8 @@ public class NotebookService implements ProductService{
 
     //4.Adim : Baslangicta kayitli defterler olsun
     public NotebookService(){
-        Notebook notebook1= new Notebook(1, "Cizgili", "75", );
+        Notebook notebook1= new Notebook(1, "Cizgili", "75", 5,"Adel","120");
+        Notebook notebook2= new Notebook(1, "Kareli", "100", 10,"Adel","150");
     }
 
 
@@ -21,9 +22,9 @@ public class NotebookService implements ProductService{
         int choice = -1;
         while (choice != 0) {
             System.out.println("1-Defterleri Listele");
-            System.out.println("2-Kitap Ekle");
-            System.out.println("3-Kitap Sil");
-            System.out.println("4-Yayinevine Gore Kitaplari Filtrele");
+            System.out.println("2-Defter Ekle");
+            System.out.println("3-Defter Sil");
+            System.out.println("4-Markaya Gore Defterleri Filtrele");
             System.out.println("0-Cikis");
             System.out.print("Seciminiz : ");
             choice = scanner.nextInt();
