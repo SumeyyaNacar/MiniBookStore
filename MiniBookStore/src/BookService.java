@@ -79,13 +79,13 @@ public class BookService implements ProductService {
     public void addProduct() {
         Scanner inp = new Scanner(System.in);
         System.out.println("Kitap Adi : ");
-        String bookName = inp.next();
+        String bookName = inp.nextLine();
         System.out.println("Yazar Adi : ");
-        String authorName = inp.next();
+        String authorName = inp.nextLine();
         System.out.println("Yayinevi  : ");
-        String pub = inp.next();
+        String pub = inp.nextLine();
         System.out.println("Birim Fiyat : ");
-        String price = inp.next();
+        String price = inp.nextLine();
         System.out.println("Stok : ");
         int stock = inp.nextInt();
 
