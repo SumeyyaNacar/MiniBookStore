@@ -11,6 +11,7 @@ public class Notebook extends Product {
     }
 
     public String getBrand() {
+
         return brand;
     }
 
