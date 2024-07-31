@@ -61,7 +61,7 @@ public class NotebookService implements ProductService{
                 "ID", "Defter adi", "Fiyat", "Stok", "Marka", "Sayfa Sayisi");
         for (Notebook notebook : notebookList) {
             System.out.printf("%-2s | %-20s | %-15s | %-10s | %-7s | %-5s  \n",
-                   notebook.getId()+ notebook.getName() +notebook.getPrice() +notebook.getStock() +notebook.getBrand() +notebook.getSheet());
+                   notebook.getId(), notebook.getName(), notebook.getPrice(), notebook.getStock(), notebook.getBrand(), notebook.getSheet());
         }
         System.out.println("===================================");
 
@@ -87,6 +87,7 @@ public class NotebookService implements ProductService{
         this.notebookList.add(newNotebook);
     }
 
+    //8. adim: Kullanicidan id al. id ile notebook bul, listeden kaldir.
     @Override
     public void removeProduct() {
         Scanner inp = new Scanner(System.in);
@@ -109,11 +110,19 @@ public class NotebookService implements ProductService{
             }
         }
 
-
     }
+
+    //9. Adim: filtreleme methodu- tum defterlerin markalarina bak filter ile ayni ise bilgileri getir
 
     @Override
     public void filterProduct(String filter) {
+
+        for (Notebook notebook : notebookList){
+            if (notebook.getBrand().equalsIgnoreCase(filter)) {
+                System.out.printf("%-2s | %-20s | %-15s | %-10s | %-7s | %-5s  \n",
+                        notebook.getId(), notebook.getName(), notebook.getPrice(), notebook.getStock(), notebook.getBrand(), notebook.getSheet());
+            }
+        }
 
     }
 }
