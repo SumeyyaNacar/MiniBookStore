@@ -67,13 +67,48 @@ public class NotebookService implements ProductService{
 
     }
 
+   //7.Adim: Kullanicidan alinan bilgilerle Notebook obj olusturulacak ve listeye eklenecek
     @Override
     public void addProduct() {
+        Scanner inp = new Scanner(System.in);
+        System.out.println("Defter Adi : ");
+        String notebookName = inp.nextLine();
+        System.out.println("Birim Fiyat : ");
+        String price = inp.nextLine();
+        System.out.println("Stok : ");
+        int stock = inp.nextInt();
+        inp.nextLine();
+        System.out.println("Marka : ");
+        String brand = inp.nextLine();
+        System.out.println("Sayfa Sayisi  : ");
+        String sheet = inp.nextLine();
 
+        Notebook newNotebook= new Notebook(this.notebookList.get(this.notebookList.size()-1). getId()+1, notebookName,price,stock, brand, sheet);
+        this.notebookList.add(newNotebook);
     }
 
     @Override
     public void removeProduct() {
+        Scanner inp = new Scanner(System.in);
+
+        System.out.println("Id : ");
+        int id=inp.nextInt();
+        boolean isExist=true;
+        for (Notebook notebook: notebookList){
+            isExist=true;
+            if (notebook.getId()==id){
+                this.notebookList.remove(id);
+                System.out.println("Defter silindi");
+                break;
+
+            }else {
+                isExist=false;
+            }
+           if (!isExist){
+               System.out.println("Defter bulunamadi");
+            }
+        }
+
 
     }
 
