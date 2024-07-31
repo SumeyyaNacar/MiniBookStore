@@ -52,13 +52,18 @@ public class NotebookService implements ProductService{
         }
 
 
-
-
-
     }
 
     @Override
     public void listProduct() {
+        System.out.println("===================================");
+        System.out.printf("%-2s | %-20s | %-15s | %-10s | %-7s | %-5s  \n",
+                "ID", "Defter adi", "Fiyat", "Stok", "Marka", "Sayfa Sayisi");
+        for (Notebook notebook : notebookList) {
+            System.out.printf("%-2s | %-20s | %-15s | %-10s | %-7s | %-5s  \n",
+                   notebook.getId()+ notebook.getName() +notebook.getPrice() +notebook.getStock() +notebook.getBrand() +notebook.getSheet());
+        }
+        System.out.println("===================================");
 
     }
 
