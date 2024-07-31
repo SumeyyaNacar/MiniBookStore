@@ -2,21 +2,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class NotebookService implements ProductService{
+public class NotebookService implements ProductService {
     //2.Adim : ProductService i implement et ve methodlari notebook a uygun sekilde doldurü
 
     //3-Adim : NoteBooklari saklamak icin list olusturalim
     List<Notebook> notebookList = new ArrayList<>();
 
     //4.Adim : Baslangicta kayitli defterler olsun
-    public NotebookService(){
-        Notebook notebook1= new Notebook(1, "Cizgili", "75", 5,"Adel","120");
-        Notebook notebook2= new Notebook(2, "Kareli", "100", 10,"Adel","150");
+    public NotebookService() {
+        Notebook notebook1 = new Notebook(1, "Cizgili", "75", 5, "Adel", "120");
+        Notebook notebook2 = new Notebook(2, "Kareli", "100", 10, "Adel", "150");
 
         this.notebookList.add(notebook1);
         this.notebookList.add(notebook2);
     }
-
 
 
     @Override
@@ -64,13 +63,13 @@ public class NotebookService implements ProductService{
                 "ID", "Defter adi", "Fiyat", "Stok", "Marka", "Sayfa Sayisi");
         for (Notebook notebook : notebookList) {
             System.out.printf("%-2s | %-20s | %-15s | %-10s | %-7s | %-5s  \n",
-                   notebook.getId(), notebook.getName(), notebook.getPrice(), notebook.getStock(), notebook.getBrand(), notebook.getSheet());
+                    notebook.getId(), notebook.getName(), notebook.getPrice(), notebook.getStock(), notebook.getBrand(), notebook.getSheet());
         }
         System.out.println("===================================");
 
     }
 
-   //7.Adim: Kullanicidan alinan bilgilerle Notebook obj olusturulacak ve listeye eklenecek
+    //7.Adim: Kullanicidan alinan bilgilerle Notebook obj olusturulacak ve listeye eklenecek
     @Override
     public void addProduct() {
         Scanner inp = new Scanner(System.in);
@@ -86,7 +85,7 @@ public class NotebookService implements ProductService{
         System.out.println("Sayfa Sayisi  : ");
         String sheet = inp.nextLine();
 
-        Notebook newNotebook= new Notebook(this.notebookList.get(this.notebookList.size()-1). getId()+1, notebookName,price,stock, brand, sheet);
+        Notebook newNotebook = new Notebook(this.notebookList.get(this.notebookList.size() - 1).getId() + 1, notebookName, price, stock, brand, sheet);
         this.notebookList.add(newNotebook);
     }
 
@@ -94,21 +93,21 @@ public class NotebookService implements ProductService{
     @Override
     public void removeProduct() {
         Scanner inp = new Scanner(System.in);
-        boolean isExist=true;
+        boolean isExist = true;
         System.out.println("Id : ");
-        int id=inp.nextInt();
-        for (Notebook notebook: notebookList){
-            if (notebook.getId()==id){
-                isExist=true;
+        int id = inp.nextInt();
+        for (Notebook notebook : notebookList) {
+            if (notebook.getId() == id) {
+                isExist = true;
                 this.notebookList.remove(id);
                 System.out.println("Defter silindi");
                 break;
 
-            }else {
-                isExist=false;
+            } else {
+                isExist = false;
             }
-           if (!isExist){
-               System.out.println("Defter bulunamadi");
+            if (!isExist) {
+                System.out.println("Defter bulunamadi");
             }
         }
 
@@ -119,7 +118,7 @@ public class NotebookService implements ProductService{
     @Override
     public void filterProduct(String filter) {
 
-        for (Notebook notebook : notebookList){
+        for (Notebook notebook : notebookList) {
             if (notebook.getBrand().equalsIgnoreCase(filter)) {
                 System.out.printf("%-2s | %-20s | %-15s | %-10s | %-7s | %-5s  \n",
                         notebook.getId(), notebook.getName(), notebook.getPrice(), notebook.getStock(), notebook.getBrand(), notebook.getSheet());
