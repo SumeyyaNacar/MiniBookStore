@@ -11,7 +11,10 @@ public class NotebookService implements ProductService{
     //4.Adim : Baslangicta kayitli defterler olsun
     public NotebookService(){
         Notebook notebook1= new Notebook(1, "Cizgili", "75", 5,"Adel","120");
-        Notebook notebook2= new Notebook(1, "Kareli", "100", 10,"Adel","150");
+        Notebook notebook2= new Notebook(2, "Kareli", "100", 10,"Adel","150");
+
+        this.notebookList.add(notebook1);
+        this.notebookList.add(notebook2);
     }
 
 
@@ -39,9 +42,9 @@ public class NotebookService implements ProductService{
                     removeProduct();
                     break;
                 case 4:
-                    System.out.println("Yayinevini giriniz");
-                    String pub = scanner.next();
-                    filterProduct(pub);
+                    System.out.println("Marka giriniz");
+                    String brand = scanner.next();
+                    filterProduct(brand);
                     break;
                 case 0:
                     System.out.println("Ana menuye yonlendiriliyorsunuz");
@@ -91,13 +94,12 @@ public class NotebookService implements ProductService{
     @Override
     public void removeProduct() {
         Scanner inp = new Scanner(System.in);
-
+        boolean isExist=true;
         System.out.println("Id : ");
         int id=inp.nextInt();
-        boolean isExist=true;
         for (Notebook notebook: notebookList){
-            isExist=true;
             if (notebook.getId()==id){
+                isExist=true;
                 this.notebookList.remove(id);
                 System.out.println("Defter silindi");
                 break;
